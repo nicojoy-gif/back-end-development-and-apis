@@ -1,0 +1,17 @@
+{
+  "name": "prime-checker",
+  "version": "1.0.0",
+  "description": "It's a package to get if a number is prime or not",
+  "keywords": [
+    "prim",
+    "numbers",
+    "even"
+  ],
+  "license": "MIT",
+  "author": "joy",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.test.js"
+  }
+}
