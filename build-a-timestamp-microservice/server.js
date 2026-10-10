@@ -12,7 +12,34 @@ app.get("/", (_req, res) => {
 });
 
 // Do not change code above this line
+app.get("/api", (_req, res) => {
+  handleDate(undefined, res);
+});
 
+app.get("/api/:date", (req, res) => {
+  handleDate(req.params.date, res);
+});
+
+function handleDate(date, res) {
+  let parsedDate;
+
+  if (!date) {
+    parsedDate = new Date();
+  } else if (/^\d+$/.test(date)) {
+    parsedDate = new Date(parseInt(date));
+  } else {
+    parsedDate = new Date(date);
+  }
+
+  if (parsedDate.toString() === "Invalid Date") {
+    return res.json({ error: "Invalid Date" });
+  }
+
+  res.json({
+    unix: parsedDate.getTime(),
+    utc: parsedDate.toUTCString(),
+  });
+}
 // Do not change code below this line
 
 const PORT = 8000;
